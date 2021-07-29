@@ -1,0 +1,44 @@
+
+
+<table width=170 collspacing=0 cellpadding=0 border=0 align=center>
+  <tr height=30 align=cneter>
+    <td width=170 align=center bgcolor=#fffbcc style="border-bottom:1px solid black;"><font color=black style='font-size:14pt;'"><b>전체 카테고리</b></font></td>
+  </tr>
+  <tr height=30 align=cneter>
+    <td width=170 align=center bgcolor=fffbcc style="border-top:1px solid black; border-bottom:1px solid black;"><a href=p-list.php?class=1><img src='https://www.flaticon.com/svg/static/icons/svg/1532/1532495.svg' width=20 height=20 valign=center><font color=black style='font-size:12pt;' onMouseover="this.style.color='#f87b5e'" onMouseout="this.style.color='black'"><b>Apple</b></font></a></td>
+  </tr>
+  <tr height=30 align=cneter>
+    <td width=170 align=center bgcolor=fffbcc style="border-top:1px solid black; border-bottom:1px solid black;"><a href=p-list.php?class=2><img src='https://www.flaticon.com/svg/static/icons/svg/882/882747.svg' width=20 height=20 valign=center><font color=black style='font-size:12pt;' onMouseover="this.style.color='#f87b5e'" onMouseout="this.style.color='black'"><b>SAMSUNG</b></font></a></td>
+  </tr>
+  <tr height=30 align=cneter>
+    <td width=170 align=center bgcolor=fffbcc style="border-top:1px solid black; border-bottom:1px solid black;"><a href=p-list.php?class=3><img src='https://www.flaticon.com/svg/static/icons/svg/882/882722.svg' width=20 height=20 valign=center><font color=black style='font-size:12pt;' onMouseover="this.style.color='#f87b5e'" onMouseout="this.style.color='black'"><b>LG</b></font></a></td>
+  </tr>
+</table>
+
+
+<table width=170 height=475 cellspacing=0 cellpadding=0 border=0 align=center valign=bottom>
+  <tr height=100 valign=top><td width=170 valign=top><img src=./icon/insen.gif width=170></td></tr>
+  <tr height=200 valign=bottom><td width=170 valign=bottom><?
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$results=mysql_query("select * from notibanner", $con);
+$ids = mysql_result($results,0,"id");
+
+$results=mysql_query("select * from noti where id=$ids",$con);
+
+if ($ids!=0){
+// 각 필드에 해당하는 데이터를 뽑아 내는 과정
+$contents=mysql_result($results,0,"content");
+
+// 테이블로부터 읽은 내용을 화면에 디스플레이
+echo("
+  $contents
+");
+}
+
+mysql_close($con);
+
+
+
+?></td></tr>
+</table>

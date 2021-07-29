@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Mobile OnlineStore</title>
+<style>
+    	<!--
+        	A:link { text-decoration:none;}
+        	A:visited { text-decoration:none;}
+        	A:active { text-decoration:none;}
+    	-->
+</style>
+</head>
+<body>
+<table width=900 border=0 cellspacing=0 cellpadding=0 align=center>
+<tr>
+  <td>
+  <table width=900 border=0 cellspacing=0 cellpadding=0 align=right bgcolor=#FFF5EE style="border-bottom:1px solid black;">
+  <tr height=30>
+  <? if (!$UserID) { ?>
+    <td width=700></td>
+    <form method=post action=login.php onsubmit="if(!this.uid.value || !this.upass.value)   return false;">
+    <td align=center><font color=black>ID: </font></td><td><input type=text size=12 name=uid></td>
+    <td width=20 align=center>&nbsp;<font color=black>|</font></td>
+    <td align=center><font color=black>PW: </font></td><td><input type=password size=12   name=upass></td>
+    <td width=20 align=center>&nbsp;<font color=black>|</font></td>
+    <td colspan=2 align=center><input type=image src=https://www.flaticon.com/svg/static/icons/svg/3596/3596128.svg width=20 height=20 align=center valign=center value=submit></td>
+    <td width=20 align=center><font color=black>|</font></td>
+    <td><a href=join.html><img src='https://www.flaticon.com/svg/static/icons/svg/40/40358.svg' width=20 height=20></a></td>
+    <td width=20 align=center><font color=black>|</font></td>
+    <td><a   href=findidpw.php><img src='https://www.flaticon.com/svg/static/icons/svg/813/813714.svg' width=20 height=20></a></td>
+    </form>
+  <? } else { ?>
+    <td width=650></td>
+    <td align=center><font style='font-size:12pt;'><b><? echo $UserName; ?></b>님 반갑습니다.</font></td>
+    <td width=20 align=center><font color=black>|</font></td>
+    <td align=center><a href=mypage.php><img src='//pics.gmarket.co.kr/pc/single/kr/common/image__header-mypage.svg' width=20 height=20 align=center></a></td>
+    <td width=20 align=center><font color=black>|</font></td>
+    <td><a   href=logout.php><img src='https://www.flaticon.com/svg/static/icons/svg/482/482618.svg' width=20 height=20 align=center></a></td>
+    </form>
+  <? } ?>
+
+  </table>
+<tr height=70>
+  <td width=900 align=center><a href=index.php><img src=./icon/logo.png height=130 valign=top align=center></a></td>
+</tr>
+<tr>
+  <td >
+<table width=900 border=0 cellspacing=0 cellpadding=0 align=center bgcolor=#fafafa style="border-top:1px solid black; border-bottom:1px solid black;">
+	<tr height=30>
+  <td width=50>&nbsp;</td>
+  <td width=20 align=center><font color=black>|</font></td>
+  <td width=100 align=center><a href=noti.php><font color=#f87b5e style='font-size:12pt;' onMouseover="this.style.color='#FAEBD7'" onMouseout="this.style.color='#f87b5e'"><b>공지사항</b></font></a></td>
+  <td width=20 align=center><font color=black>|</font></td>
+  <td width=100 align=center><a href=p-list.php?class=0><font color=#f87b5e style='font-size:12pt;' onMouseover="this.style.color='#FAEBD7'" onMouseout="this.style.color='#f87b5e'"><b>인기상품</b></font></a></td>
+  <td width=20 align=center><font color=black>|</font></td>
+  <td width=320 align=center><form method=post action=p-search.php style='margin-bottom:2px;'><input type=text name=fnd size=30> <input type=image src=./icon/search.svg border=0 width=20 height=20 value=submit align=center></form></td>
+  <td width=20 align=center><font color=black>|</font></td>
+  <td width=100 align=center><a href=show.php?board=customer><font color=#f87b5e style='font-size:12pt;' onMouseover="this.style.color='#FAEBD7'" onMouseout="this.style.color='#f87b5e'"><b>고객게시판</b></font></a></td>
+  <td width=20 align=center><font color=black>|</font></td>
+
+
+<?
+if ($UserID == "admin") {     // 관리자로 로그인 한 경우 [관리메뉴] 표시
+     echo ("<td width=100 align=center><a href=admin.php><font color=#f87b5e style='font-size:12pt;' onMouseover=\"this.style.color='#FAEBD7'\" onMouseout=\"this.style.color='#f87b5e'\"><b>관리메뉴</b></font></a></td>");
+} else {     // 로그인 안했거나 일반 사용자로 로그인 한 경우 [쇼핑카트] 표시
+      echo ("<td width=100 align=center><a href=showbag.php><font color=#f87b5e style='font-size:12pt;' onMouseover=\"this.style.color='#FAEBD7'\" onMouseout=\"this.style.color='#f87b5e'\"><b>쇼핑관리</b></font></a></td>");
+    }
+?>
+  <td width=20 align=center><font color=black>|</font></td>
+	    <td width=50>&nbsp;</td>
+          </tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
